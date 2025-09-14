@@ -9,6 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.7"
+    "@tailwindcss/vite": "^4.1.13",
+    "astro": "^5.13.7",
+    "flowbite": "^3.1.2",
+    "fulldev-ui": "^0.6.5",
+    "tailwindcss": "^4.1.13"
   }
 }
