@@ -1,0 +1,21 @@
+---
+const { title, subParagraph } = Astro.props;
+import Chevron from "../icons/Chevron.svg"
+---
+
+<details
+  class="group border border-gray-200 rounded-lg px-6 mb-4 p-4 focus:open open:border-primary"
+>
+  <summary
+    class="text-sm leading-6 font-semibold text-gray-900 select-none list-none w-full flex justify-between"
+  >
+    {title}
+    <Chevron
+      class="w-5 transition-transform duration-300 group-open:rotate-180"
+    />
+  </summary>
+
+  <h4 class="mt-3 text-sm leading-6 text-gray-600">
+    <p>{subParagraph}</p>
+  </h4>
+</details>

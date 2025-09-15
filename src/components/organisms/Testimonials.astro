@@ -1,0 +1,39 @@
+---
+import fetchApi from "../../lib/strapi.ts";
+import type Testimonial from "../../interfaces/testimonials.ts";
+import Section from "../atoms/Section.astro";
+import CardTestimonials from "../molecules/CardTestimonials.astro";
+
+const TestimonialData = await fetchApi<Testimonial[]>({
+  endpoint: "testimonials?populate=*",
+  wrappedByKey: "data",
+});
+---
+
+<Section
+  id="testimonials"
+  class="flex-col gap-y-6 bg-gradient-to-br from-primary/1 via-secondary/5 to-accent/10 py-16 min-h-[calc(75vh-0px)] items-center justify-center"
+>
+  <h2
+    class="w-3/5 text-center text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground"
+  >
+    {TestimonialData[0].title[0].children[0].text}
+    <span class="text-primary">
+      {TestimonialData[0].title[1].children[0].text}
+    </span>
+  </h2>
+
+  <p class="w-4/5 text-center text-lg text-muted-foreground">
+    {TestimonialData[0].subParagraph}
+  </p>
+
+  <div class="w-11/12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+    {
+      TestimonialData[0].CardTestimonials.map((item: any) => (
+        <CardTestimonials
+          item={item}
+        />
+      ))
+    }
+  </div>
+</Section>

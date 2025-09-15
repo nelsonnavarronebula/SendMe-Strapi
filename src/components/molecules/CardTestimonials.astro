@@ -1,0 +1,40 @@
+---
+import Card from "../atoms/Card.astro";
+import Avatar from "../atoms/Avatar.astro";
+import Rating from '../icons/Rating.svg'
+
+const { item } = Astro.props;
+
+const maxStars = 5;
+const starsArray = Array.from({ length: maxStars });
+
+console.log(item.qualification)
+---
+
+<Card>
+  <div class="flex gap-1">
+    {
+      starsArray.map((_, i) => (
+        <Rating
+          class={`w-4 h-4 ${i < item.qualification ? "text-primary fill-primary" : "text-gray-300 fill-gray-300"}`}
+        />
+      ))
+    }
+  </div>
+
+  <p class="text-muted-foreground leading-relaxed">{item.opinion}</p>
+
+  <div class="flex items-center space-x-3 pt-4 border-t border-border/50">
+    <div class="w-12">
+      <Avatar image={'https://cdn2.psychologytoday.com/assets/styles/manual_crop_4_3_1200x900/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=eaVcXTz5'} />
+    </div>
+
+
+    <div>
+      <p class="font-semibold text-foreground">author</p>
+      <p class="text-sm text-muted-foreground">
+        company
+      </p>
+    </div>
+  </div>
+</Card>

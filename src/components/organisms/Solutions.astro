@@ -1,0 +1,30 @@
+---
+import fetchApi from "../../lib/strapi.ts";
+import type Solutions from "../../interfaces/solutions.ts";
+import Section from "../atoms/Section.astro";
+import CardSolution from "../molecules/CardSolution.astro";
+
+const SolutionsData = await fetchApi<Solutions[]>({
+  endpoint: "solutions?populate=*",
+  wrappedByKey: "data",
+});
+---
+
+<Section class="flex-col gap-y-6 my-20">
+  <h2
+    class="w-3/5 text-center text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground"
+  >
+    {SolutionsData[0].title[0].children[0].text}
+    <span class="text-primary"
+      >{SolutionsData[0].title[1].children[0].text}</span
+    >
+  </h2>
+
+  <p class="w-4/5 text-center text-lg text-muted-foreground">
+    {SolutionsData[0].subParagraph}
+  </p>
+
+  <div class="w-4/5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    {SolutionsData[0].CardSolution.map((item) => <CardSolution item={item} />)}
+  </div>
+</Section>

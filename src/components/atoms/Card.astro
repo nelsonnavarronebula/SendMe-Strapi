@@ -1,0 +1,14 @@
+---
+export interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<a
+  href="#"
+  class=`group relative bg-gradient-to-br from-blue-50 to-blue-100/70 p-10 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group-hover:border-primary/30 space-y-4 hover:scale-110 rounded-xl flex flex-col justify-between ${className}`
+>
+  <slot />
+</a>

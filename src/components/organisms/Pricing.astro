@@ -1,0 +1,44 @@
+---
+import fetchApi from "../../lib/strapi.ts";
+import type Plan from "../../interfaces/plan.ts";
+import Section from "../atoms/Section.astro";
+import Accordion from "../atoms/Accordion.astro";
+
+const PlanData = await fetchApi<Plan[]>({
+  endpoint: "plans?populate=*",
+  wrappedByKey: "data",
+});
+---
+
+<Section id="plans" class="min-h-screen flex-col gap-y-6 bg-white">
+  <h2
+    class="w-3/5 text-center text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground"
+  >
+    {PlanData[0].title[0].children[0].text}
+    <span class="text-primary"> {PlanData[0].title[1].children[0].text}</span>
+  </h2>
+
+  <p class="w-4/5 text-center text-lg text-muted-foreground">
+    {PlanData[0].subParagraph}
+  </p>
+
+  <!-- <CardsPricing /> -->
+
+  <h3 class="my-10 text-center text-2xl font-bold text-foreground mb-8">
+    {PlanData[0].titleFrequentlyAskedQuestions}
+  </h3>
+
+  <div
+    class="w-4/5 grid grid-cols-1 md:grid-cols-2 gap-8 auto-rows-auto items-start"
+  >
+    {
+      PlanData[0].frequentlyAskedQuestions.map((item: any) => (
+        <Accordion
+          id={item.id}
+          title={item.title}
+          subParagraph={item.subParagraph}
+        />
+      ))
+    }
+  </div>
+</Section>

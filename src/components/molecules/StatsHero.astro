@@ -1,0 +1,20 @@
+---
+import CardImgText from "../atoms/CardImgText.astro";
+import Planet from "../../components/icons/Planet.svg";
+const STRAPI_URL = import.meta.env.PUBLIC_STRAPI_URL;
+const { item } = Astro.props;
+---
+
+<CardImgText
+  class="md:w-50 flex items-center gap-3 p-3 bg-white/70 backdrop-blur-sm rounded-xl border border-black/50 transition duration-300 hover:shadow-lg shadow-blue-600/20"
+>
+  <div class="flex-shrink-0 fill-black">
+    <!-- <img
+      src={`${STRAPI_URL}${item.icon.url}`}
+      alt={item.icon.alternativeText || "icono"}
+      class="w-5 h-5"
+    /> -->
+  </div>
+  <span class="text-gray-700 font-medium text-sm">{item.text}</span>
+  <slot />
+</CardImgText>

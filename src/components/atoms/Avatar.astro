@@ -1,0 +1,16 @@
+---
+import Image from "astro/components/Image.astro";
+
+const { image } = Astro.props;
+---
+
+<Image
+  src={image}
+  alt="{item.company}"
+  width={800}
+  height={600}
+  format="webp"
+  quality={50}
+  loading="lazy"
+  class="w-12 h-12 rounded-full object-cover border"
+/>

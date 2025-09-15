@@ -1,0 +1,39 @@
+---
+import Button from "../atoms/Button.astro";
+import Card from "../atoms/Card.astro";
+import CardIcon from "../atoms/CardIcon.astro";
+
+const { item } = Astro.props;
+---
+
+<Card class="flex flex-col justify-between">
+  <CardIcon>🔥</CardIcon>
+  <h3 class="text-xl font-bold text-[#111111] leading-tight">{item.title}</h3>
+  <p class="text-[#333333] text-base leading-relaxed">{item.subParagraph}</p>
+  <div class="flex flex-col gap-y-2">
+    <!-- {
+      item.map((detail: any) => (
+        <ul class="list-disc marker:text-primary pl-4">
+          <li>{detail}</li>
+        </ul>
+      ))
+    } -->
+    <ul class="list-disc marker:text-primary pl-4">
+      <li>Lorem ipsum dolor sit amet</li>
+    </ul>
+    <ul class="list-disc marker:text-primary pl-4">
+      <li>Lorem ipsum dolor sit amet</li>
+    </ul>
+  </div>
+
+  <div class="absolute inset-0 opacity-5">
+    <div
+      class="absolute top-4 right-4 w-32 h-32 border border-current rounded-full -z-10"
+    >
+    </div>
+    <div
+      class="absolute bottom-4 left-4 w-24 h-24 border border-current rounded-full -z-10"
+    >
+    </div>
+  </div>
+</Card>

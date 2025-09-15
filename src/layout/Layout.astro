@@ -1,3 +1,7 @@
+---
+import Navbar from "../components/organisms/Navbar.astro";
+---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -6,7 +10,16 @@
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body>
-    <slot />
+  <body
+    ><Navbar />
+    <div class="bg-background text-foreground"><slot /></div>
   </body>
+  <script
+    is:inline
+    src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"
+  ></script>
+  <script
+    type="module"
+    src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
+  ></script>
 </html>

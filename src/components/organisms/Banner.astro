@@ -1,0 +1,31 @@
+---
+import fetchApi from "../../lib/strapi.ts";
+import type Banner from "../../interfaces/banner.ts";
+import Section from "../atoms/Section.astro";
+
+const BannerData = await fetchApi<Banner[]>({
+  endpoint: "banners?populate=*",
+  wrappedByKey: "data",
+});
+---
+
+<Section class="bg-primary/85 p-8">
+    <div class="space-y-8 flex flex-col items-center justify-center">
+      <h2
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight text-center"
+      >
+        {BannerData[0].title}
+      </h2>
+
+      <a href={BannerData[0].Button.buttonPath}
+        class="bg-black hover:bg-black/90 text-white font-bold px-12 py-4 rounded-full cursor-pointer hover:scale-110 transition duration-300"
+      >
+        {BannerData[0].Button.textButton}
+      </a>
+
+
+      <p class="text-black/70 text-sm text-center w-full">
+        {BannerData[0].textCopy}
+      </p>
+    </div>
+</Section>

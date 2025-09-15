@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@lottiefiles/lottie-player": "^2.0.12",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.7",
     "flowbite": "^3.1.2",

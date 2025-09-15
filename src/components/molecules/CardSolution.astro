@@ -1,0 +1,16 @@
+---
+import Button from "../atoms/Button.astro";
+import Card from "../atoms/Card.astro";
+import CardIcon from "../atoms/CardIcon.astro";
+
+const { item } = Astro.props;
+---
+
+<Card
+  class=`group relative bg-gradient-to-br shadow-lg hover:shadow-xl transition-all text-center duration-300 border border-gray-100 group-hover:border-[#fece2f]/30 flex flex-col items-center hover:scale-110 rounded-xl`
+>
+  <CardIcon>🔥</CardIcon>
+  <h3 class="text-xl font-bold text-[#111111] leading-tight">{item.title}</h3>
+  <p class="text-[#333333] text-base leading-relaxed">{item.subParagraph}</p>
+  {item.button && <Button isPrimary={false}>{item.button}</Button>}
+</Card>

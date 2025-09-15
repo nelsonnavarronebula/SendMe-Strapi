@@ -1,0 +1,47 @@
+---
+interface LanguageProps {
+  languages: {
+    id: number;
+    textButton: string;
+    buttonPath: string;
+    country: {
+      url: string;
+    };
+  }[];
+}
+const { languages } = Astro.props;
+import Planet from "../icons/Planet.svg";
+---
+
+<div class="relative inline-block text-left">
+  <button
+    type="button"
+    onclick="document.getElementById('dropdown-lang').classList.toggle('hidden')"
+    class="inline-flex justify-center items-center rounded-md p-1 text-sm font-medium focus:outline-none border border-primary cursor-pointer"
+  >
+    <Planet class="w-5 h-5 text-black" />
+  </button>
+
+  <div
+    id="dropdown-lang"
+    class="absolute right-0 mt-2 w-44 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 hidden"
+  >
+    <ul class="py-2 font-medium">
+      {languages.map((item:any) => (
+        <li>
+          <a
+            href={item.buttonPath}
+            class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+          >
+            <img
+              class="w-5 h-5 rounded-full me-3"
+              src={`http://localhost:1337${item.country.url}`}
+              alt={item.textButton}
+            />
+            {item.textButton}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
